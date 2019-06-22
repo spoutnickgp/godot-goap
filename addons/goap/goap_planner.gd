@@ -1,6 +1,6 @@
 tool
-extends Node
-class_name ActionPlanner, "res://addons/goap/action_planner.png"
+extends GoapBase
+class_name GoapPlanner
 
 var state_atoms = []
 var actions = []
@@ -92,7 +92,7 @@ func parse_actions():
 	for a in get_children():
 		add_action(a.action if (a.action != null) else a.name, a.preconditions, a.effect, a.cost)
 
-func plan(s, g):
+func plan(s: State, g):
 	#print("Plan from '"+s+"' to '"+g+"'")
 	var state = parse_state(s)
 	var goal = parse_state(g)
